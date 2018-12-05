@@ -1,4 +1,5 @@
 from tkinter import *
+import pyqt5
 import tkinter.messagebox
 
 def channelCapacity():
