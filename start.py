@@ -7,17 +7,19 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import *
 
 import page1_2
 import sys
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(QWidget):
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(400, 400)
         self.mainwindow = MainWindow
+        self.mainwindow.setWindowFlags(QtCore.Qt.WindowMinimizeButtonHint) #禁止最大化按钮
+        self.mainwindow.setFixedSize(MainWindow.width(), MainWindow.height())
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
@@ -126,16 +128,39 @@ class Ui_MainWindow(object):
         self.comboBox4.setItemText(1, _translate("MainWindow", "MH码"))
         self.comboBox4.setItemText(2, _translate("MainWindow", "LZ码"))
 
-        self.button1.clicked.connect(self.jumpToPage1_2)
+        self.button1.clicked.connect(self.jumpToPage1)
+        self.button2.clicked.connect(self.jumpToPage2)
+        self.button3.clicked.connect(self.jumpToPage3)
+        self.button4.clicked.connect(self.jumpToPage4)
 
-    def jumpToPage1_2(self):
-        self.mainwindow.hide()
-        dialog1_2 = QtWidgets.QDialog()
-        ui = page1_2.Ui_page1_2()
-        ui.setupUi(dialog1_2)
-        dialog1_2.show()
-        dialog1_2.exec()
-        self.mainwindow.show()
+
+    def msg(self):
+        QMessageBox.about(self, "提示", "请选择具体实验")
+
+    def jumpToPage1(self):
+        if self.comboBox.currentText() == "请选择":
+            self.msg()
+
+        elif self.comboBox.currentText() == "唯一可译码":
+            self.mainwindow.hide()
+            dialog1_2 = QtWidgets.QDialog()
+            ui = page1_2.Ui_page1_2()
+            ui.setupUi(dialog1_2)
+            dialog1_2.show()
+            dialog1_2.exec()
+            self.mainwindow.show()
+
+    def jumpToPage2(self):
+        if self.comboBox.currentText() == "请选择":
+            self.msg()
+
+    def jumpToPage3(self):
+        if self.comboBox.currentText() == "请选择":
+            self.msg()
+
+    def jumpToPage4(self):
+        if self.comboBox.currentText() == "请选择":
+            self.msg()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
