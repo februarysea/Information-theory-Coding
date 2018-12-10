@@ -140,6 +140,7 @@ class Ui_MainWindow(QWidget):
     def jumpToPage1(self):
         if self.comboBox.currentText() == "请选择":
             self.msg()
+            return
 
         elif self.comboBox.currentText() == "唯一可译码":
             self.mainwindow.hide()
@@ -153,14 +154,17 @@ class Ui_MainWindow(QWidget):
     def jumpToPage2(self):
         if self.comboBox.currentText() == "请选择":
             self.msg()
+            return
 
     def jumpToPage3(self):
         if self.comboBox.currentText() == "请选择":
             self.msg()
+            return
 
     def jumpToPage4(self):
         if self.comboBox.currentText() == "请选择":
             self.msg()
+            return
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

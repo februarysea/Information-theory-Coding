@@ -7,6 +7,8 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import *
+
 
 class Ui_page1_2(object):
     def setupUi(self, page1_2):
@@ -88,11 +90,41 @@ class Ui_page1_2(object):
         self.label.setText(_translate("page1_2", "code1："))
         self.label_4.setText(_translate("page1_2", "code2："))
         self.label_3.setText(_translate("page1_2", "code3："))
-        self.label_5.setText(_translate("page1_2", "是否是唯一可译码：待确定"))
+        self.label_5.setText(_translate("page1_2", "是否存在唯一可译码：待确定"))
         self.pushButton.setText(_translate("page1_2", "确认"))
         self.pushButton_2.setText(_translate("page1_2", "返回"))
 
         self.pushButton_2.clicked.connect(self.jumpToStart)
+        self.pushButton.clicked.connect(self.UDC)
 
     def jumpToStart(self):
         self.page.close()
+
+    def UDC(self):
+        code1 = self.lineEdit.text()
+        code2 = self.lineEdit_2.text()
+        code3 = self.lineEdit_3.text()
+        codeLen1 = len(code1)
+        codeLen2 = len(code2)
+        codeLen3 = len(code3)
+
+        kraft = 2 ** -codeLen1 + 2 ** -codeLen2 + 2 ** -codeLen3
+
+        if code1 == code2 or code2 == code3 or code1 == code3:
+            self.label_5.setText("是否存在唯一可译码：否")
+
+        elif kraft > 1:
+            self.label_5.setText("是否存在唯一可译码：是")
+
+        elif kraft <= 1:
+            self.label_5.setText("是否存在唯一可译码：否")
+
+
+
+
+
+
+
+
+
+
