@@ -115,7 +115,10 @@ class Ui_Page2_3(object):
 
 
         self.pushButton_2.clicked.connect(self.jumpToStart)
-        #self.pushButton.clicked.connect(self.UDC)
+        self.pushButton.clicked.connect(self.Fano)
 
     def jumpToStart(self):
         self.page.close()
+
+    def Fano(self):
+        pass

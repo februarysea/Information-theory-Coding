@@ -114,7 +114,10 @@ class Ui_Page2_2(object):
         self.pushButton_2.setText(_translate("Page2_2", "返回"))
 
         self.pushButton_2.clicked.connect(self.jumpToStart)
-        #self.pushButton.clicked.connect(self.UDC)
+        self.pushButton.clicked.connect(self.Huffman)
 
     def jumpToStart(self):
         self.page.close()
+
+    def Huffman(self):
+        pass

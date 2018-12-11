@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from math import *
 
 class Ui_Page2_1(object):
     def setupUi(self, Page2_1):
@@ -115,7 +116,37 @@ class Ui_Page2_1(object):
 
 
         self.pushButton_2.clicked.connect(self.jumpToStart)
-        #self.pushButton.clicked.connect(self.UDC)
+        self.pushButton.clicked.connect(self.Shannon)
 
     def jumpToStart(self):
         self.page.close()
+
+    def Shannon(self):
+        p = []
+        result = ""
+        s = 0.0
+        p.append(float(self.lineEdit.text()))
+        p.append(float(self.lineEdit_2.text()))
+        p.append(float(self.lineEdit_3.text()))
+        p.append(float(self.lineEdit_4.text()))
+        p.append(float(self.lineEdit_5.text()))
+        p.append(float(self.lineEdit_6.text()))
+        p.sort(reverse=True)
+
+        for i in range(0, 6):
+            code = ""
+            k = ceil(-log2(p[i]))  # 码长
+            binary = s
+            for j in range(0, k):
+                if binary * 2 > 1:
+                    binary = binary * 2
+                    code = code + "1"
+                    binary = binary - 1
+                elif binary * 2 < 1:
+                    binary = binary * 2
+                    code = code + "0"
+            result = result + code + " "
+            s = s + p[i]
+
+        self.label_5.setText("编码结果:" + result)
+        print(result)
