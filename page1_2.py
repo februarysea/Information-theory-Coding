@@ -10,7 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 
 
-class Ui_page1_2(object):
+class Ui_Page1_2(object):
     def setupUi(self, page1_2):
         page1_2.setObjectName("page1_2")
         page1_2.resize(400, 400)

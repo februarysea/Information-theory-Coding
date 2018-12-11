@@ -9,6 +9,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 
+import page1_1
 import page1_2
 import sys
 
@@ -145,10 +146,19 @@ class Ui_MainWindow(QWidget):
         elif self.comboBox.currentText() == "唯一可译码":
             self.mainwindow.hide()
             dialog1_2 = QtWidgets.QDialog()
-            ui = page1_2.Ui_page1_2()
+            ui = page1_2.Ui_Page1_2()
             ui.setupUi(dialog1_2)
             dialog1_2.show()
             dialog1_2.exec()
+            self.mainwindow.show()
+
+        elif self.comboBox.currentText() == "信道容量":
+            self.mainwindow.hide()
+            dialog1_1 = QtWidgets.QDialog()
+            ui = page1_1.Ui_Page1_1()
+            ui.setupUi(dialog1_1)
+            dialog1_1.show()
+            dialog1_1.exec()
             self.mainwindow.show()
 
     def jumpToPage2(self):
