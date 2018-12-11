@@ -120,4 +120,20 @@ class Ui_Page2_2(object):
         self.page.close()
 
     def Huffman(self):
-        pass
+        p = []
+        result = ""
+        p.append(float(self.lineEdit.text()))
+        p.append(float(self.lineEdit_2.text()))
+        p.append(float(self.lineEdit_3.text()))
+        p.append(float(self.lineEdit_4.text()))
+        p.append(float(self.lineEdit_5.text()))
+        p.append(float(self.lineEdit_6.text()))
+        p.sort(reverse=True)
+
+        code = []
+        code.append(p[0])
+        code.append(p[1])
+        code.append(p[2])
+        code.append(p[3])
+        code.append(p[4])
+        code.append(p[5])

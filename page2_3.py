@@ -121,4 +121,13 @@ class Ui_Page2_3(object):
         self.page.close()
 
     def Fano(self):
-        pass
+        p = []
+        result = ""
+        s = 0.0
+        p.append(float(self.lineEdit.text()))
+        p.append(float(self.lineEdit_2.text()))
+        p.append(float(self.lineEdit_3.text()))
+        p.append(float(self.lineEdit_4.text()))
+        p.append(float(self.lineEdit_5.text()))
+        p.append(float(self.lineEdit_6.text()))
+        p.sort(reverse=True)
