@@ -14,6 +14,8 @@ import page1_2
 import page2_1
 import page2_2
 import page2_3
+import page3_1
+import page3_2
 import sys
 
 class Ui_MainWindow(QWidget):
@@ -201,6 +203,24 @@ class Ui_MainWindow(QWidget):
         if self.comboBox3.currentText() == "请选择":
             self.msg()
             return
+
+        elif self.comboBox3.currentText() == "LZW编码":
+            self.mainwindow.hide()
+            dialog3_1 = QtWidgets.QDialog()
+            ui = page3_1.Ui_Page3_1()
+            ui.setupUi(dialog3_1)
+            dialog3_1.show()
+            dialog3_1.exec()
+            self.mainwindow.show()
+
+        elif self.comboBox3.currentText() == "Hamming(7,4)编译码器":
+            self.mainwindow.hide()
+            dialog3_2 = QtWidgets.QDialog()
+            ui = page3_2.Ui_Page3_2()
+            ui.setupUi(dialog3_2)
+            dialog3_2.show()
+            dialog3_2.exec()
+            self.mainwindow.show()
 
     def jumpToPage4(self):
         if self.comboBox4.currentText() == "请选择":
