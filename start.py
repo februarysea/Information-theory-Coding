@@ -11,6 +11,9 @@ from PyQt5.QtWidgets import *
 
 import page1_1
 import page1_2
+import page2_1
+import page2_2
+import page2_3
 import sys
 
 class Ui_MainWindow(QWidget):
@@ -162,17 +165,45 @@ class Ui_MainWindow(QWidget):
             self.mainwindow.show()
 
     def jumpToPage2(self):
-        if self.comboBox.currentText() == "请选择":
+        if self.comboBox2.currentText() == "请选择":
             self.msg()
             return
 
+        elif self.comboBox2.currentText() == "香农编码":
+            self.mainwindow.hide()
+            dialog2_1 = QtWidgets.QDialog()
+            ui = page2_1.Ui_Page2_1()
+            ui.setupUi(dialog2_1)
+            dialog2_1.show()
+            dialog2_1.exec()
+            self.mainwindow.show()
+
+        elif self.comboBox2.currentText() == "霍夫曼编码":
+            self.mainwindow.hide()
+            dialog2_2 = QtWidgets.QDialog()
+            ui = page2_2.Ui_Page2_2()
+            ui.setupUi(dialog2_2)
+            dialog2_2.show()
+            dialog2_2.exec()
+            self.mainwindow.show()
+
+        elif self.comboBox2.currentText() == "费诺编码":
+            self.mainwindow.hide()
+            dialog2_3 = QtWidgets.QDialog()
+            ui = page2_3.Ui_Page2_3()
+            ui.setupUi(dialog2_3)
+            dialog2_3.show()
+            dialog2_3.exec()
+            self.mainwindow.show()
+
+
     def jumpToPage3(self):
-        if self.comboBox.currentText() == "请选择":
+        if self.comboBox3.currentText() == "请选择":
             self.msg()
             return
 
     def jumpToPage4(self):
-        if self.comboBox.currentText() == "请选择":
+        if self.comboBox4.currentText() == "请选择":
             self.msg()
             return
 

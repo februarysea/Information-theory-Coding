@@ -127,7 +127,7 @@ class Ui_Page1_1(object):
 
     def DMC(self):
         a = []
-        s = log2(6)
+        s = 0
         a.append(float(self.lineEdit_11.text()))
         a.append(float(self.lineEdit.text()))
         a.append(float(self.lineEdit_9.text()))
@@ -142,6 +142,7 @@ class Ui_Page1_1(object):
         a.append(float(self.lineEdit_8.text()))
 
         for i in a:
-            s = s + log2(i)
+            s = s + log2(i) * i
+        s = s + log2(6)
         self.label_2.setText(("信道容量为：" + str(s) + "bit/符号"))
 
