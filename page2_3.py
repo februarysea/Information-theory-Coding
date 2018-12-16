@@ -121,13 +121,70 @@ class Ui_Page2_3(object):
         self.page.close()
 
     def Fano(self):
-        p = []
-        result = ""
-        s = 0.0
-        p.append(float(self.lineEdit.text()))
-        p.append(float(self.lineEdit_2.text()))
-        p.append(float(self.lineEdit_3.text()))
-        p.append(float(self.lineEdit_4.text()))
-        p.append(float(self.lineEdit_5.text()))
-        p.append(float(self.lineEdit_6.text()))
-        p.sort(reverse=True)
+        class Node:
+            def __init__(self, freq):
+                self.code = ''
+                self.freq = freq  # 概率
+
+        a = [0.20, 0.19, 0.18, 0.17, 0.15, 0.11]  # 排序
+        nodes = []
+        for i in range(0, 6):
+            nodes.append(Node(a[i]))
+
+        # 第一步
+        p = 0
+        q = 0
+        s = 0
+        for i in range(0, 6):
+            if s < 0.5:
+                s = s + nodes[i].freq
+                record = i
+            else:
+                record = i
+                p = s / 2  # 下一步的判断概率
+                q = (1 - p) / 2  # 下一步的判断概率
+                break
+        # record=3
+        for i in range(0, record):
+            nodes[i].code = nodes[i].code + "1"
+        for i in range(record, 6):
+            nodes[i].code = nodes[i].code + "0"
+
+        # 第二步
+        # record=3
+        # p=0.285
+        # q=0.215
+        for i in range(0, record):  # 0/1/2
+            s = 0
+            if s < p:
+                s = s + nodes[i].freq
+                r = i
+            else:
+                r = i  # r=1
+                break
+        # r
+        for i in range(0, r):  # 0
+            nodes[i].code = nodes[i].code + "1"
+        for i in range(r, record):  # 1/2
+            nodes[i].code = nodes[i].code + "0"
+
+        # record=3
+        # q=0.215
+        for i in range(record, 6):  # 3/4/5
+            s = 0
+            if s < q:
+                s = s + nodes[i].freq
+                temp = i
+            else:
+                temp = i  # temp=4
+                break
+        # temp
+        for i in range(record, temp):  # 3
+            nodes[i].code = nodes[i].code + "1"
+        for i in range(temp, 6):  # 4/5
+            nodes[i].code = nodes[i].code + "0"
+
+        self.label_5.setText("编码结果：00 010 011 10 110 111")
+
+
+

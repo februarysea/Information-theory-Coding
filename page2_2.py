@@ -178,5 +178,5 @@ class Ui_Page2_2(object):
         codes = huffmanEncoding(nodes, root)
         for i in range(0, 6):
             result = result + codes[i] + " "
-            
+
         self.label_5.setText("编码结果：" + result)
