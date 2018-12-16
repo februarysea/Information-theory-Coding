@@ -83,3 +83,6 @@ class Ui_Page3_2(object):
 
     def jumpToStart(self):
         self.page.close()
+
+    def Hamming(self):
+        pass

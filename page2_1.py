@@ -148,5 +148,5 @@ class Ui_Page2_1(object):
             result = result + code + " "
             s = s + p[i]
 
-        self.label_5.setText("编码结果:" + result)
+        self.label_5.setText("编码结果：" + result)
         print(result)

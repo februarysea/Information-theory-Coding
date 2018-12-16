@@ -120,6 +120,50 @@ class Ui_Page2_2(object):
         self.page.close()
 
     def Huffman(self):
+        # Tree-Node Type
+        class Node:
+            def __init__(self, freq):
+                self.left = None  # 左节点
+                self.right = None  # 右节点
+                self.father = None  # 父节点
+                self.freq = freq  # 概率
+
+            def isLeft(self):
+                return self.father.left == self
+
+        # create nodes创建叶子节点
+        def createNodes(freqs):
+            return [Node(freq) for freq in freqs]
+
+        # create Huffman-Tree创建Huffman树
+        def createHuffmanTree(nodes):
+            queue = nodes[:]
+            while len(queue) > 1:
+                queue.sort(key=lambda item: item.freq)
+                node_left = queue.pop(0)
+                node_right = queue.pop(0)
+                node_father = Node(node_left.freq + node_right.freq)
+                node_father.left = node_left
+                node_father.right = node_right
+                node_left.father = node_father
+                node_right.father = node_father
+                queue.append(node_father)
+            queue[0].father = None
+            return queue[0]
+
+        # Huffman编码
+        def huffmanEncoding(nodes, root):
+            codes = [''] * len(nodes)
+            for i in range(len(nodes)):
+                node_tmp = nodes[i]
+                while node_tmp != root:
+                    if node_tmp.isLeft():
+                        codes[i] = '0' + codes[i]
+                    else:
+                        codes[i] = '1' + codes[i]
+                    node_tmp = node_tmp.father
+            return codes
+
         p = []
         result = ""
         p.append(float(self.lineEdit.text()))
@@ -129,11 +173,10 @@ class Ui_Page2_2(object):
         p.append(float(self.lineEdit_5.text()))
         p.append(float(self.lineEdit_6.text()))
         p.sort(reverse=True)
-
-        code = []
-        code.append(p[0])
-        code.append(p[1])
-        code.append(p[2])
-        code.append(p[3])
-        code.append(p[4])
-        code.append(p[5])
+        nodes = createNodes([item for item in p])
+        root = createHuffmanTree(nodes)
+        codes = huffmanEncoding(nodes, root)
+        for i in range(0, 6):
+            result = result + codes[i] + " "
+            
+        self.label_5.setText("编码结果：" + result)
