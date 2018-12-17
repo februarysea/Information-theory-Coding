@@ -73,16 +73,37 @@ class Ui_Page3_2(object):
         _translate = QtCore.QCoreApplication.translate
         Page3_2.setWindowTitle(_translate("Page3_2", "Dialog"))
         self.label.setText(_translate("Page3_2", "Hamming编码"))
-        self.label_2.setText(_translate("Page3_2", "请输入（位数<12）："))
+        self.label_2.setText(_translate("Page3_2", "请输入："))
         self.label_3.setText(_translate("Page3_2", "结果："))
         self.pushButton_2.setText(_translate("Page3_2", "确认"))
         self.pushButton.setText(_translate("Page3_2", "返回"))
 
         self.pushButton.clicked.connect(self.jumpToStart)
-        #self.pushButton_2.clicked.connect(self.Fano)
+        self.pushButton_2.clicked.connect(self.Hamming)
 
     def jumpToStart(self):
         self.page.close()
 
     def Hamming(self):
-        pass
+        code = bin(int(self.lineEdit.text()))
+        code = str(code)[2:]
+        #	判断待验证位数是否达到12位，不足位数前面补0
+        while len(code) < 12:
+            code = '0' + code
+        code_list = list(code)
+        code_1 = int(code_list[0]) ^ int(code_list[1]) ^ int(code_list[3]) ^ int(code_list[4]) ^ int(
+            code_list[6]) ^ int(code_list[8]) ^ int(code_list[10]) ^ int(code_list[11])
+        code_2 = int(code_list[0]) ^ int(code_list[2]) ^ int(code_list[3]) ^ int(code_list[5]) ^ int(
+            code_list[6]) ^ int(code_list[9]) ^ int(code_list[10])
+        code_4 = int(code_list[1]) ^ int(code_list[2]) ^ int(code_list[3]) ^ int(code_list[7]) ^ int(
+            code_list[8]) ^ int(code_list[9]) ^ int(code_list[10])
+        code_8 = int(code_list[4]) ^ int(code_list[5]) ^ int(code_list[6]) ^ int(code_list[7]) ^ int(
+            code_list[8]) ^ int(code_list[9]) ^ int(code_list[10])
+        code_16 = int(code_list[11])
+        code_list.insert(0, str(code_1))
+        code_list.insert(1, str(code_2))
+        code_list.insert(3, str(code_4))
+        code_list.insert(7, str(code_8))
+        code_list.insert(15, str(code_16))
+        result = ''.join(code_list)
+        self.label_4.setText(result)

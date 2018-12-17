@@ -81,7 +81,7 @@ class Ui_Page4_1(object):
 
 
         self.pushButton.clicked.connect(self.jumpToStart)
-        #self.pushButton_2.clicked.connect(self.Fano)
+        self.pushButton_2.clicked.connect(self.Fano)
 
     def jumpToStart(self):
         self.page.close()

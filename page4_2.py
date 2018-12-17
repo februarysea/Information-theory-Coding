@@ -74,13 +74,13 @@ class Ui_Page4_2(object):
         _translate = QtCore.QCoreApplication.translate
         Page4_2.setWindowTitle(_translate("Page4_2", "Dialog"))
         self.label.setText(_translate("Page4_2", "LZ编码"))
-        self.label_2.setText(_translate("Page4_2", "请输入："))
+        self.label_2.setText(_translate("Page4_2", "请输入(仅考虑abc)："))
         self.label_3.setText(_translate("Page4_2", "结果："))
         self.pushButton_2.setText(_translate("Page4_2", "确认"))
         self.pushButton.setText(_translate("Page4_2", "返回"))
 
         self.pushButton.clicked.connect(self.jumpToStart)
-        #self.pushButton_2.clicked.connect(self.Fano)
+        self.pushButton_2.clicked.connect(self.LZ)
 
     def jumpToStart(self):
         self.page.close()
