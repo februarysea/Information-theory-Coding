@@ -16,6 +16,8 @@ import page2_2
 import page2_3
 import page3_1
 import page3_2
+import page4_1
+import page4_2
 import sys
 
 class Ui_MainWindow(QWidget):
@@ -226,6 +228,25 @@ class Ui_MainWindow(QWidget):
         if self.comboBox4.currentText() == "请选择":
             self.msg()
             return
+
+        elif self.comboBox4.currentText() == "MH码":
+            self.mainwindow.hide()
+            dialog4_1 = QtWidgets.QDialog()
+            ui = page4_1.Ui_Page4_1()
+            ui.setupUi(dialog4_1)
+            dialog4_1.show()
+            dialog4_1.exec()
+            self.mainwindow.show()
+
+
+        elif self.comboBox4.currentText() == "LZ码":
+            self.mainwindow.hide()
+            dialog4_2 = QtWidgets.QDialog()
+            ui = page4_2.Ui_Page4_2()
+            ui.setupUi(dialog4_2)
+            dialog4_2.show()
+            dialog4_2.exec()
+            self.mainwindow.show()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

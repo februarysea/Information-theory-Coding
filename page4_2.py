@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'page3_2.ui'
+# Form implementation generated from reading ui file 'page4_2.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
 #
@@ -8,16 +8,17 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_Page3_2(object):
-    def setupUi(self, Page3_2):
-        Page3_2.setObjectName("Page3_2")
-        Page3_2.resize(400, 400)
+class Ui_Page4_2(object):
+    def setupUi(self, Page4_2):
+        Page4_2.setObjectName("Page4_2")
+        Page4_2.resize(400, 400)
 
-        self.page = Page3_2
-        self.page.setWindowFlags(QtCore.Qt.WindowMinimizeButtonHint)  # 1
-        self.page.setFixedSize(Page3_2.width(), Page3_2.height())  # 2窗口调整不可用
+        self.page = Page4_2
+        self.page.setWindowFlags(QtCore.Qt.WindowMinimizeButtonHint) #1
+        self.page.setFixedSize(Page4_2.width(), Page4_2.height()) #2窗口调整不可用
 
-        self.verticalLayoutWidget = QtWidgets.QWidget(Page3_2)
+
+        self.verticalLayoutWidget = QtWidgets.QWidget(Page4_2)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(50, 80, 281, 221))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
@@ -66,17 +67,17 @@ class Ui_Page3_2(object):
         self.horizontalLayout_2.addWidget(self.pushButton)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
-        self.retranslateUi(Page3_2)
-        QtCore.QMetaObject.connectSlotsByName(Page3_2)
+        self.retranslateUi(Page4_2)
+        QtCore.QMetaObject.connectSlotsByName(Page4_2)
 
-    def retranslateUi(self, Page3_2):
+    def retranslateUi(self, Page4_2):
         _translate = QtCore.QCoreApplication.translate
-        Page3_2.setWindowTitle(_translate("Page3_2", "Dialog"))
-        self.label.setText(_translate("Page3_2", "Hamming编码"))
-        self.label_2.setText(_translate("Page3_2", "请输入（位数<12）："))
-        self.label_3.setText(_translate("Page3_2", "结果："))
-        self.pushButton_2.setText(_translate("Page3_2", "确认"))
-        self.pushButton.setText(_translate("Page3_2", "返回"))
+        Page4_2.setWindowTitle(_translate("Page4_2", "Dialog"))
+        self.label.setText(_translate("Page4_2", "LZ编码"))
+        self.label_2.setText(_translate("Page4_2", "请输入："))
+        self.label_3.setText(_translate("Page4_2", "结果："))
+        self.pushButton_2.setText(_translate("Page4_2", "确认"))
+        self.pushButton.setText(_translate("Page4_2", "返回"))
 
         self.pushButton.clicked.connect(self.jumpToStart)
         #self.pushButton_2.clicked.connect(self.Fano)
@@ -84,5 +85,5 @@ class Ui_Page3_2(object):
     def jumpToStart(self):
         self.page.close()
 
-    def Hamming(self):
+    def LZ(self):
         pass
