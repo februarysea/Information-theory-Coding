@@ -47,7 +47,7 @@ class Ui_Page4_2(object):
         self.label_3 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_3.setObjectName("label_3")
         self.gridLayout.addWidget(self.label_3, 1, 0, 1, 1)
-        self.label_4 = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.label_4 = QtWidgets.QTextEdit(self.verticalLayoutWidget)
         self.label_4.setText("")
         self.label_4.setObjectName("label_4")
         self.gridLayout.addWidget(self.label_4, 1, 1, 1, 1)
@@ -86,4 +86,47 @@ class Ui_Page4_2(object):
         self.page.close()
 
     def LZ(self):
-        pass
+        def compress(message):
+            tree_dict, m_len, i = {}, len(message), 0
+            while i < m_len:
+                # case I
+                if message[i] not in tree_dict.keys():
+                    yield (0, message[i])
+                    tree_dict[message[i]] = len(tree_dict) + 1
+                    i += 1
+                # case III
+                elif i == m_len - 1:
+                    yield (tree_dict.get(message[i]), '')
+                    i += 1
+                else:
+                    for j in range(i + 1, m_len):
+                        # case II
+                        if message[i:j + 1] not in tree_dict.keys():
+                            yield (tree_dict.get(message[i:j]), message[j])
+                            tree_dict[message[i:j + 1]] = len(tree_dict) + 1
+                            i = j + 1
+                            break
+                        # case III
+                        elif j == m_len - 1:
+                            yield (tree_dict.get(message[i:j + 1]), '')
+                            i = j + 1
+            print(tree_dict)
+            self.label_4.setText(str(tree_dict))
+
+        def uncompress(packed):
+            unpacked, tree_dict = '', {}
+            for index, ch in packed:
+                if index == 0:
+                    unpacked += ch
+                    tree_dict[len(tree_dict) + 1] = ch
+                else:
+                    term = tree_dict.get(index) + ch
+                    unpacked += term
+                    tree_dict[len(tree_dict) + 1] = term
+            return unpacked
+
+        s = self.lineEdit.text()
+        pack = compress(s)
+        unpack = uncompress(pack)
+
+
