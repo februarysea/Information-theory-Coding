@@ -229,7 +229,7 @@ class Ui_MainWindow(QWidget):
             self.msg()
             return
 
-        elif self.comboBox4.currentText() == "MH码":
+        elif self.comboBox4.currentText() == "游程编码":
             self.mainwindow.hide()
             dialog4_1 = QtWidgets.QDialog()
             ui = page4_1.Ui_Page4_1()

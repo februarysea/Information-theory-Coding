@@ -73,7 +73,7 @@ class Ui_Page4_1(object):
     def retranslateUi(self, Page4_1):
         _translate = QtCore.QCoreApplication.translate
         Page4_1.setWindowTitle(_translate("Page4_1", "Dialog"))
-        self.label.setText(_translate("Page4_1", "MH编码"))
+        self.label.setText(_translate("Page4_1", "游程编码"))
         self.label_2.setText(_translate("Page4_1", "请输入："))
         self.label_3.setText(_translate("Page4_1", "结果："))
         self.pushButton_2.setText(_translate("Page4_1", "确认"))
@@ -81,10 +81,23 @@ class Ui_Page4_1(object):
 
 
         self.pushButton.clicked.connect(self.jumpToStart)
-        self.pushButton_2.clicked.connect(self.MH)
+        self.pushButton_2.clicked.connect(self.RLC)
 
     def jumpToStart(self):
         self.page.close()
 
-    def MH(self):
-        pass
+    def RLC(self):
+        s = self.lineEdit.text()
+        result = ''
+        last = s[0]
+        count = 1
+        for _ in s[1:]:
+            if last == _:
+                count += 1
+            else:
+                result += str(count) + last
+                last = _
+                count = 1
+        result += str(count) + last
+        self.label_4.setText(result)
+
