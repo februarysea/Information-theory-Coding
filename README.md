@@ -1,4 +1,2 @@
 # coding
-a training project about Information theory &amp; coding
-
-HELLO,WORLD
+a training project about Information theory &amp; coding by pyqt.
